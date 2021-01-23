@@ -1,0 +1,154 @@
+void iceCream()
+{
+    glDisable(GL_TEXTURE_2D);
+    glColor3f(0,0.5,1);
+//    glBindTexture(GL_TEXTURE_2D, texId[6]);
+//    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    glPushMatrix();
+    glTranslatef(0, 11, 0);
+    glRotatef(90, 1, 0, 0);
+    glutSolidCone(1.8, 11, 50,40);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0, 12, 0);
+    glutSolidSphere(2.5, 50, 40);
+    glPopMatrix();
+
+}
+
+void smallBlock()
+{
+    glPushMatrix();
+    glBegin(GL_QUADS);
+    glTexCoord2f(0.,0.);    glVertex3f(-2.0, 0.0, 1);  // Front side Z+ facing
+    glTexCoord2f(1.,0.);    glVertex3f(2.0, 0.0, 1);
+    glTexCoord2f(1.,1.);    glVertex3f(2.0, 6.0, 1);
+    glTexCoord2f(0,1.);     glVertex3f(-2.0, 6.0, 1);
+
+    glTexCoord2f(0.,0.);    glVertex3f(2.0, 0.0, -1);
+    glTexCoord2f(1.,0.);    glVertex3f(-2.0, 0.0,-1);  // Back side Z- facing
+    glTexCoord2f(1.,1.);    glVertex3f(-2.0, 6.0,-1);
+    glTexCoord2f(0.,1.);    glVertex3f(2.0, 6.0, -1);
+
+    glTexCoord2f(0.,0.);    glVertex3f(-2.0, 6.0, 1);
+    glTexCoord2f(1.,0.);    glVertex3f(2.0, 6.0,  1); // Top side Y+ facing
+    glTexCoord2f(1.,1.);    glVertex3f(2.0, 6.0, -1);
+    glTexCoord2f(0.,1.);    glVertex3f(-2.0, 6.0, -1);
+
+    glTexCoord2f(0.,0.);    glVertex3f(-2.0, 0.0, -1);
+    glTexCoord2f(1.,0.);    glVertex3f(-2.0, 0.0,1);  // Left side X- facing
+    glTexCoord2f(1.,1.);    glVertex3f(-2.0, 6.0,1);
+    glTexCoord2f(0.,1.);    glVertex3f(-2.0, 6.0, -1);
+
+    glTexCoord2f(0.,0.);    glVertex3f(2.0, 0.0, 1);
+    glTexCoord2f(1.,0.);    glVertex3f(2.0, 0.0,-1);  // Right side X+ facing
+    glTexCoord2f(1.,1.);    glVertex3f(2.0, 6.0,-1);
+    glTexCoord2f(0.,1.);    glVertex3f(2.0, 6.0, 1);
+
+    glEnd();
+    glPopMatrix();
+}
+
+void drawWall()
+{
+    glBindTexture(GL_TEXTURE_2D, texId[6]);
+    glPushMatrix();
+    glBegin(GL_QUADS);
+    glTexCoord2f(0.,0.);    glVertex3f(-8.0, 0.0, 1.0);  // Front side Z+ facing
+    glTexCoord2f(3.,0.);    glVertex3f(8.0, 0.0, 1.0);
+    glTexCoord2f(3.,2.);    glVertex3f(8.0, 10.0, 1.0);
+    glTexCoord2f(0,2.);     glVertex3f(-8.0, 10.0, 1.0);
+
+    glTexCoord2f(0.,0.);    glVertex3f(8.0, 0.0, -1.0);
+    glTexCoord2f(3.,0.);    glVertex3f(-8.0, 0.0,-1.0);  // Back side Z- facing
+    glTexCoord2f(3.,2.);    glVertex3f(-8.0, 10.0,-1.0);
+    glTexCoord2f(0.,2.);    glVertex3f(8.0, 10.0, -1.0);
+
+    glTexCoord2f(0.,0.);    glVertex3f(-8.0, 10.0, 1.0);
+    glTexCoord2f(3.,0.);    glVertex3f(8.0, 10.0,  1.0); // Top side Y+ facing
+    glTexCoord2f(3.,2.);    glVertex3f(8.0, 10.0, -1.0);
+    glTexCoord2f(0.,2.);    glVertex3f(-8.0, 10.0, -1.0);
+
+    glTexCoord2f(0.,0.);    glVertex3f(8.0, 0.0, 1.0);
+    glTexCoord2f(3.,0.);    glVertex3f(8.0, 0.0,  -1.0); // Right side X+ facing
+    glTexCoord2f(3.,2.);    glVertex3f(8.0, 10.0, -1.0);
+    glTexCoord2f(0.,2.);    glVertex3f(8.0, 10.0, 1.0);
+
+    glTexCoord2f(0.,0.);    glVertex3f(-8.0, 0.0, -1.0);
+    glTexCoord2f(1.,0.);    glVertex3f(-8.0, 0.0,  1.0); // Left side X- facing
+    glTexCoord2f(1.,1.);    glVertex3f(-8.0, 10.0, 1.0);
+    glTexCoord2f(0.,1.);    glVertex3f(-8.0, 10.0, -1.0);
+
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(-10, 0,0);
+    smallBlock();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(10, 0,0);
+    smallBlock();
+    glPopMatrix();
+
+
+}
+
+void drawMuseum()
+{
+    glEnable(GL_TEXTURE_2D);
+
+    glPushMatrix();
+        glRotatef(90, 0, 1,0);
+        // LEFT WALL
+        glPushMatrix();
+        glTranslatef(0, 0, -13);
+        drawWall();
+        glPopMatrix();
+        // RIGHT WALL
+        glPushMatrix();
+        glTranslatef(0, 0, 13);
+        drawWall();
+        glPopMatrix();
+    glPopMatrix();
+
+    // FRONT WALLS LEFT
+    for (int x = -10; x < -5; x+=4) {
+        glPushMatrix();
+        glTranslatef(x, 0,11);
+        smallBlock();
+        glPopMatrix();
+    }
+    // FRONT WALLS RIGHT
+    for (int x = 10; x > 5; x-=4) {
+        glPushMatrix();
+        glTranslatef(x, 0,11);
+        smallBlock();
+        glPopMatrix();
+    }
+    // BACK WALL
+    glPushMatrix();
+    glTranslatef(0, 0, -11);
+    drawWall();
+    glPopMatrix();
+
+    // -------------------------------- DRAWS THE ICE CREAM IN THE 4 CORNERS ---------------------------------------
+    // CORNER BACK RIGHT AND CORNER BACK LEFT
+    for (int i = 1; i > -2; i-=2) {
+        glPushMatrix();
+        glTranslatef(12.7*i, 2, -10.6);
+        iceCream();
+        glPopMatrix();
+    }
+    // FRONT BACK RIGHT AND FRONT BACK LEFT
+    for (int i = 1; i > -2; i-=2) {
+        glPushMatrix();
+        glTranslatef(12.7*i, 2, 10.6);
+        iceCream();
+        glPopMatrix();
+    }
+
+    glDisable(GL_TEXTURE_2D);
+}

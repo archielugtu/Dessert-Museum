@@ -1,0 +1,4 @@
+/Users/rchiboy/COSC363/Assignments/Assignment_1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/rchiboy/COSC363/Assignments/Assignment_1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/rchiboy/COSC363/Assignments/Assignment_1/cmake-build-debug/CMakeFiles/CreateModel.out.dir
+/Users/rchiboy/COSC363/Assignments/Assignment_1/cmake-build-debug/CMakeFiles/Assignment1.out.dir

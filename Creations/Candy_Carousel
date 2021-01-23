@@ -1,0 +1,159 @@
+// ------------------------------------------ CANDY Carousel Balls -----------------------------------------------------
+void drawCandyBalls()
+{
+    glPushMatrix();
+    glRotatef(-spinObject*4, 0,1,0);
+    gluSphere(q, 2, 20,20);
+    glPopMatrix();
+}
+
+// ------------------------------------------ CANDY Carousel Sticks -----------------------------------------------------
+void drawCandySticks()
+{
+    glPushMatrix();
+    glColor3f(1,1,1);
+    glTranslatef(0,1,0);
+    glRotatef(-90, 1,0,0);
+    gluCylinder(q, 0.2,0.2,7,20,20);
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(0.78, 0.63,0.78);
+    glTranslatef(0,8,0);
+    glRotatef(-90, 1,0,0);
+    gluCylinder(q, 0.2,0.2,7,20,20);
+    glPopMatrix();
+}
+
+// ---------------------------------- Upper half of Candy Carousel -----------------------------------------------------
+void drawTopLayer()
+{
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texId[7]);
+    glPushMatrix();                                          //    THE BALL AT THE TOP
+    glTranslatef(0,26.5,0);
+    gluSphere(q, 1.5, 30,30);
+    glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
+
+    glColor3f(0.78, 0.63,0.78);
+    glPushMatrix();                                             // THE CONE ROOF
+    glTranslatef(0,19,0);
+    glRotatef(-90,1,0,0);
+    glutSolidCone(10, 7,50,50);
+    glPopMatrix();
+
+    glPushMatrix();                                             // 6th LAYER DISK
+    glTranslatef(0,19,0);
+    glRotatef(-90,1,0,0);
+    gluDisk(q, 0,10,50,50);
+    glPopMatrix();
+
+    glPushMatrix();                                             // 6th LAYER CYLINDER
+    glTranslatef(0,19,0);
+    glRotatef(-90,1,0,0);
+    gluCylinder(q, 10, 10, 1, 50,50);
+    glPopMatrix();
+
+    glPushMatrix();                                             // LONG CENTRE CYLINDER
+    glRotatef(-90,1,0,0);
+    gluCylinder(q, 2,2,19,30,30);
+    glPopMatrix();
+
+    // ----------------------------------------------- CANDY BALLS -----------------------------------------------------
+    glPushMatrix();                                            // 1st Candy Stick
+    glTranslatef(7,19.2,0);
+    glRotatef(candyBallMovement,0,0,1);
+    glTranslatef(0,-15,0);
+    drawCandySticks();
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texId[6]);
+    drawCandyBalls();                                         // 1st Candy Ball
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(-7,19.2,0);
+    glRotatef(-candyBallMovement,0,0,1);
+    glTranslatef(0,-15,0);
+    drawCandySticks();                                        // 2nd Candy Stick
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texId[7]);
+    drawCandyBalls();                                         // 2nd Candy Ball
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0,19.2,-7);
+    glRotatef(candyBallMovement,1,0,0);
+    glTranslatef(0,-15,0);
+    drawCandySticks();                                        // 3rd Candy Stick
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texId[8]);
+    drawCandyBalls();                                         // 3rd Candy Ball
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(0,19.2,7);
+    glRotatef(-candyBallMovement,1,0,0);
+    glTranslatef(0,-15,0);
+    drawCandySticks();                                       // 4th Candy Stick
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texId[9]);
+    drawCandyBalls();                                        // 4th Candy Ball
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+}
+
+void drawCandyCarousel()
+{
+
+    glColor3f(0.78, 0.63,0.78);
+    glPushMatrix();                                     // 5TH LAYER CYLINDER
+    glRotatef(-90,1,0,0);
+    gluCylinder(q, 2.3,2.3,5.5,30,30);
+    glPopMatrix();
+
+    glPushMatrix();                                     // 4th LAYER DISK
+    glTranslatef(0,3,0);
+    glRotatef(-90,1,0,0);
+    gluCylinder(q, 3, 2.3,1,30,30);
+    glPopMatrix();
+
+    glPushMatrix();                                       // 3rd LAYER CYLINDER
+    glRotatef(-90,1,0,0);
+    gluCylinder(q, 3,3,3,30,30);
+    glPopMatrix();
+
+    drawTopLayer();
+    glColor3f(0.78, 0.63,0.78);
+    glPushMatrix();                                      // 5TH LAYER DISK
+    glTranslatef(0,5.5,0);
+    glRotatef(-90,1,0,0);
+    gluDisk(q, 0, 2.3,30,30);
+    glPopMatrix();
+
+    glPushMatrix();                                     // 2ND LAYER DISK
+    glTranslatef(0,1.5,0);
+    glRotatef(-90,1,0,0);
+    gluDisk(q, 0,9.5,80,50);
+    glPopMatrix();
+    glPushMatrix();                                     // 2ND LAYER CYLINDER
+    glTranslatef(0,0.5,0);
+    glRotatef(-90,1,0,0);
+    gluCylinder(q, 9.5, 9.5, 1, 80,50);
+    glPopMatrix();
+
+    glPushMatrix();                                     // MAIN LAYER DISK
+    glTranslatef(0,1,0);
+    glRotatef(-90,1,0,0);
+    gluDisk(q, 0,10,80,50);
+    glPopMatrix();
+    glPushMatrix();                                     // MAIN LAYER CYLINDER
+    glRotatef(-90,1,0,0);
+    gluCylinder(q, 10, 10, 1, 80,50);
+    glPopMatrix();
+}

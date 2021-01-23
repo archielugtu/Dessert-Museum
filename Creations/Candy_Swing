@@ -1,0 +1,169 @@
+//--Draws a character model constructed using GLUT objects ------------------
+void drawGuard()
+{
+    glColor3f(1., 0.85, 0.67);		//Head
+    glPushMatrix();
+        glTranslatef(0, 7.7, 0);
+        glRotatef(theta/2, 0, 1, 0);
+        glTranslatef(0, -7.7, 0);
+        glTranslatef(0, 7.7, 0);
+        glutSolidCube(1.4);
+    glPopMatrix();
+
+    glColor3f(1., 0., 0.);			//Torso
+    glPushMatrix();
+    glTranslatef(0, 5.5, 0);
+    glScalef(3, 3, 1.4);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glColor3f(0., 0., 0.);			//Right leg
+    glPushMatrix();
+    glTranslatef(-0.8, 4, 0);
+    glRotatef(-theta, 1, 0, 0);
+    glTranslatef(0.8, -4, 0);
+    glTranslatef(-0.8, 2.2, 0);
+    glScalef(1, 4.4, 1);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glColor3f(0., 0., 0.); //Left leg
+    glPushMatrix();
+    glTranslatef(0.8, 4, 0);
+    glRotatef(theta, 1, 0, 0);
+    glTranslatef(-0.8, -4, 0);
+    glTranslatef(0.8, 2.2, 0);
+    glScalef(1, 4.4, 1);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(1., 0., 0.);			//Right arm
+    glPushMatrix();
+    glTranslatef(-2, 5, 0);
+    glRotatef(theta, 1, 0, 0);
+    glTranslatef(2, -5, 0);
+    glTranslatef(-2, 5, 0);
+    glScalef(1, 4, 1);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // Spear
+    glColor3f(0,0,0);
+    glPushMatrix();
+    glTranslatef(-2,3.6,0.25);
+    glRotatef(theta, 1,0,0);
+    gluCylinder(q, 0.2,0.1, 7,30, 30);
+    glPopMatrix();
+    glPopMatrix();
+
+
+    glColor3f(1., 0., 0.);			//Left arm
+    glPushMatrix();
+    glTranslatef(2, 5, 0);
+    glRotatef(-theta, 1, 0, 0);
+    glTranslatef(-2, -5, 0);
+    glTranslatef(2, 5, 0);
+    glScalef(1, 4, 1);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // HAT
+    glColor3f(0,0,0);
+    glPushMatrix();
+    glRotatef(theta/2, 0, 1, 0);
+    glTranslatef(0,8,0);
+    glRotatef(-90, 1,0,0);
+    gluCylinder(q, 1.2,0.9, 3,30, 30);
+    glPopMatrix();
+
+}
+
+void drawSwing()
+{
+    glPushMatrix();                             // SMALL RIGHT VERT BAR
+    glTranslatef(5.55,14.5,-0.05);
+    glScalef(.25,.6,.25);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glPushMatrix();                             // SMALL LEFT VERT BAR
+    glTranslatef(2,14.5,-0.05);
+    glScalef(.25,.6,.25);
+    glutSolidCube(1);
+    glPopMatrix();
+
+//    glEnable(GL_TEXTURE_2D);
+//    glBindTexture(GL_TEXTURE_2D, texId[9]);
+//    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    glColor3f(0.67,0.15,0.24);
+
+    glPushMatrix();
+    glTranslatef(5.55,14.2,-0.05);      // RIGHT CHAIN
+    glRotatef(swingTheta, 1,0,0);
+    glRotatef(90, 1,0,0);
+    gluCylinder(q, 0.1, 0.1,9.25, 30,30);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslatef(2,14.2,-0.05);      // LEFT CHAIN
+    glRotatef(swingTheta, 1,0,0);
+    glRotatef(90, 1,0,0);
+    gluCylinder(q, 0.1, 0.1,9.25, 30,30);
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+
+//    glPushMatrix();
+//    glutSolidTorus(0.2,0.5, 20,15);
+//    glPopMatrix();
+
+
+    glPushMatrix();
+    glRotatef(180, 0,1,0);
+    glTranslatef(-3.8,14,0);
+    glRotatef(-swingTheta, 1,0,0);
+    glTranslatef(0,-10,1);
+    glRotatef(-90,1,0,0);
+    glBegin(GL_QUAD_STRIP);
+    for (int i = -2; i <= 2; i++) {
+        glVertex3f(i, 0, (0.25*i*i));
+        glVertex3f(i, 2, (0.25*i*i));
+    }
+    glEnd();
+    glPopMatrix();
+}
+
+//--Draws a character model constructed using GLUT objects ------------------
+void drawSwingBase()
+{
+    float grey[4] = {0.2, 0.2, 0.2, 1.0};
+    glColor3f(0,1,1);
+    // POLE
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texId[9]);
+    glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+    for (int i = 5; i<=15; i+=5) {
+        glPushMatrix();
+        glTranslatef(0, i,0);
+        glRotatef(90, 1,0,0);
+        gluCylinder(q, 0.4, 0.4,5, 30,30);
+        glPopMatrix();
+    }
+
+    glDisable(GL_TEXTURE_2D);
+
+    glColor3f(0.67,0.15,0.24);
+    glPushMatrix();                         // TOP HORIZONTAL BAR
+    glTranslatef(3,14.75,-0.05);
+    glScalef(5.5, .25, .25);
+    glutSolidCube(1);
+    glPopMatrix();
+
+
+    glPushMatrix();
+    drawSwing();
+    glPopMatrix();
+    glDisable(GL_TEXTURE_2D);
+}

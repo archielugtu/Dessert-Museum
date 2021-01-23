@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rchiboy/COSC363/Assignments/Assignment_1/Assignment1.cpp
+GLUT/glut.h
+-
+GL/freeglut.h
+-
+cmath
+-
+loadTGA.h
+/Users/rchiboy/COSC363/Assignments/Assignment_1/loadTGA.h
+
+/Users/rchiboy/COSC363/Assignments/Assignment_1/loadTGA.h
+iostream
+-
+fstream
+-
+GLUT/glut.h
+-
+GL/freeglut.h
+-
+

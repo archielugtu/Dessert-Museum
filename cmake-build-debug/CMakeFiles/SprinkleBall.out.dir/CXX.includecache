@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/rchiboy/COSC363/Assignments/Assignment_1/SprinkleBall.cpp
+iostream
+-
+fstream
+-
+climits
+-
+math.h
+-
+cmath
+-
+loadTGA.h
+/Users/rchiboy/COSC363/Assignments/Assignment_1/loadTGA.h
+GLUT/glut.h
+-
+GL/freeglut.h
+-
+
+/Users/rchiboy/COSC363/Assignments/Assignment_1/loadTGA.h
+iostream
+-
+fstream
+-
+GLUT/glut.h
+-
+GL/freeglut.h
+-
+

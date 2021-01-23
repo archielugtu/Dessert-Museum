@@ -1,0 +1,80 @@
+//--Draws a character model constructed using GLUT objects ------------------
+void drawGuard()
+{
+    glColor3f(1., 0.85, 0.67);		//Head
+    glPushMatrix();
+//      glTranslatef(0, 7.7, 0);
+//      glRotatef(2*theta, 0, 1, 0);
+//      glTranslatef(0, -7.7, 0);
+    glTranslatef(0, 7.7, 0);
+    glutSolidCube(1.4);
+    glPopMatrix();
+
+    glColor3f(1., 0., 0.);			//Torso
+    glPushMatrix();
+    glTranslatef(0, 5.5, 0);
+    glScalef(3, 3, 1.4);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glColor3f(0., 0., 0.);			//Right leg
+    glPushMatrix();
+    glTranslatef(-0.8, 4, 0);
+    glRotatef(-theta, 1, 0, 0);
+    glTranslatef(0.8, -4, 0);
+    glTranslatef(-0.8, 2.2, 0);
+    glScalef(1, 4.4, 1);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glColor3f(0., 0., 0.); //Left leg
+    glPushMatrix();
+    glTranslatef(0.8, 4, 0);
+    glRotatef(theta, 1, 0, 0);
+    glTranslatef(-0.8, -4, 0);
+    glTranslatef(0.8, 2.2, 0);
+    glScalef(1, 4.4, 1);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3f(1., 0., 0.);			//Right arm
+    glPushMatrix();
+    glTranslatef(-2, 5, 0);
+    glRotatef(theta, 1, 0, 0);
+    glTranslatef(2, -5, 0);
+    glTranslatef(-2, 5, 0);
+    glScalef(1, 4, 1);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // Spear
+    glColor3f(0,0,0);
+    glPushMatrix();
+    glTranslatef(-2,3.6,0);
+    glRotatef(theta, 1,0,0);
+//    glTranslatef(0,-1,-1);
+    gluCylinder(q, 0.2,0.1, 7,30, 30);
+    glPopMatrix();
+    glPopMatrix();
+
+
+    glColor3f(1., 0., 0.);			//Left arm
+    glPushMatrix();
+    glTranslatef(2, 5, 0);
+    glRotatef(-theta, 1, 0, 0);
+    glTranslatef(-2, -5, 0);
+    glTranslatef(2, 5, 0);
+    glScalef(1, 4, 1);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // HAT
+    glColor3f(0,0,0);
+    glPushMatrix();
+    glTranslatef(0,8,0);
+    glRotatef(-90, 1,0,0);
+    gluCylinder(q, 1.2,0.9, 3,30, 30);
+    glPopMatrix();
+
+}

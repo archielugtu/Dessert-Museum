@@ -1,0 +1,143 @@
+// ---------------------------------------- Draws the GINGERBREAD HOUSE ------------------------------------------------
+void drawGingerHouse()
+{
+    glColor3f(0.62,0.33,0.16);
+    glPushMatrix();                     // CHIMNEY
+    glTranslatef(0.8,6,0);
+    glRotatef(-90,1,0,0);
+    gluCylinder(q, 0.3,0.3,3,30,30);
+    glPopMatrix();
+
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, texId[10]);
+    // -------------------------------------  small house roof ----------------------------------------
+    glPushMatrix();
+    glBegin(GL_POLYGON);          // Front Side triangle roof
+    glTexCoord2f(0,0);      glVertex3f(-1,2,3);
+    glTexCoord2f(1,0);      glVertex3f(1,2,3);
+    glTexCoord2f(0.5,1);      glVertex3f(0,3,3);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);          // LEFT Side wall
+    glTexCoord2f(1,0);      glVertex3f(-1,2,3);
+    glTexCoord2f(1,1);      glVertex3f(0,3,3);
+    glTexCoord2f(0,1);      glVertex3f(0,3,2);
+    glTexCoord2f(0,0);      glVertex3f(-1,2,2);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);          // RIGHT Side wall
+    glTexCoord2f(0,0);      glVertex3f(1,2,3);
+    glTexCoord2f(1,0);      glVertex3f(1,2,2);
+    glTexCoord2f(1,1);      glVertex3f(0,3,2);
+    glTexCoord2f(0,1);      glVertex3f(0,3,3);
+    glEnd();
+    glPopMatrix();
+
+    // -------------------------------------  small cube body house  ---------------------------------------------------
+    glBindTexture(GL_TEXTURE_2D, texId[11]);
+    glPushMatrix();
+    glBegin(GL_POLYGON);              // Left Side wall
+    glTexCoord2f(0,0);     glVertex3f(-1,0,2);
+    glTexCoord2f(1,0);     glVertex3f(-1,0,3);
+    glTexCoord2f(1,1);     glVertex3f(-1,2,3);
+    glTexCoord2f(0,1);     glVertex3f(-1,2,2);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);          // Right Side wall
+    glTexCoord2f(0,0);      glVertex3f(1,0,2);
+    glTexCoord2f(1,0);      glVertex3f(1,0,3);
+    glTexCoord2f(1,1);      glVertex3f(1,2,3);
+    glTexCoord2f(0,1);      glVertex3f(1,2,2);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);          // Front Side wall
+    glTexCoord2f(0,0);      glVertex3f(-1,0,3);
+    glTexCoord2f(1,0);      glVertex3f(1,0,3);
+    glTexCoord2f(1,1);      glVertex3f(1,2,3);
+    glTexCoord2f(0,1);      glVertex3f(-1,2,3);
+    glEnd();
+    glPopMatrix();
+
+    glBindTexture(GL_TEXTURE_2D, texId[11]);
+
+    // -------------------------------------  BIG SQUARE BODY HOUSE ----------------------------------------
+    glPushMatrix();
+    glBegin(GL_POLYGON);                // FRONT side square
+    glTexCoord2f(0,0);      glVertex3f(-2,0,2);
+    glTexCoord2f(1,0);      glVertex3f(2, 0,2);
+    glTexCoord2f(1,1);      glVertex3f(2, 4,2);
+    glTexCoord2f(0,1);      glVertex3f(-2, 4,2);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);                // BACK side square
+    glTexCoord2f(1,0);      glVertex3f(-2,0,-2);
+    glTexCoord2f(0,0);      glVertex3f(2, 0,-2);
+    glTexCoord2f(0,1);      glVertex3f(2, 4,-2);
+    glTexCoord2f(1,1);      glVertex3f(-2, 4,-2);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);                // RIGHT side square
+    glTexCoord2f(0,1);      glVertex3f(2, 4,2);
+    glTexCoord2f(0,0);      glVertex3f(2, 0,2);
+    glTexCoord2f(1,0);      glVertex3f(2, 0,-2);
+    glTexCoord2f(1,1);      glVertex3f(2, 4,-2);
+    glEnd();
+    glPopMatrix();
+    glPushMatrix();
+    glBegin(GL_POLYGON);                // LEFT side square
+    glTexCoord2f(1,1);      glVertex3f(-2, 4,2);
+    glTexCoord2f(1,0);      glVertex3f(-2, 0,2);
+    glTexCoord2f(0,0);      glVertex3f(-2, 0,-2);
+    glTexCoord2f(0,1);      glVertex3f(-2, 4,-2);
+    glEnd();
+    glPopMatrix();
+
+    // ---------------------------------------------- MAIN ROOF ----------------------------------------------
+    glBindTexture(GL_TEXTURE_2D, texId[10]);
+    glPushMatrix();
+    glBegin(GL_POLYGON);                // FRONT triangle roof
+    glTexCoord2f(0,0);     glVertex3f(-2,4,2);
+    glTexCoord2f(1,0);     glVertex3f(2,4,2);
+    glTexCoord2f(0.5,1);     glVertex3f(0, 8,2);
+    glEnd();
+    glPopMatrix();
+    glPushMatrix();
+    glBegin(GL_POLYGON);                // BACK triangle roof
+    glTexCoord2f(1,0);     glVertex3f(-2,4,-2);
+    glTexCoord2f(0,0);     glVertex3f(2,4,-2);
+    glTexCoord2f(0.5,1);     glVertex3f(0, 8,-2);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);                // RIGHT side rectangle roof
+    glTexCoord2f(0,0);      glVertex3f(3,2,2);
+    glTexCoord2f(0,1);      glVertex3f(3, 2,-2);
+    glTexCoord2f(1,1);      glVertex3f(0, 8,-2);
+    glTexCoord2f(0,1);      glVertex3f(0, 8,2);
+    glEnd();
+    glPopMatrix();
+
+    glPushMatrix();
+    glBegin(GL_POLYGON);                // LEFT side rectangle roof
+    glTexCoord2f(0,0);      glVertex3f(-3,2,2);
+    glTexCoord2f(1,0);      glVertex3f(-3, 2,-2);
+    glTexCoord2f(1,1);      glVertex3f(0, 8,-2);
+    glTexCoord2f(0,1);      glVertex3f(0, 8,2);
+    glEnd();
+    glPopMatrix();
+
+    glDisable(GL_TEXTURE_2D);
+}

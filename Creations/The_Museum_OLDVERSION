@@ -1,0 +1,59 @@
+//--Draws a character model constructed using GLUT objects ------------------
+void drawModel1()
+{
+    // LEFT FRONT
+    glColor3f(1., 0.78, 0.06);		//Head
+    glPushMatrix();
+    glTranslatef(-9.8, 5, 4);
+    glRotatef(28.5, 0, 1, 0);
+    glScalef(0.5, 10, 18.2);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // RIGHT FRONT
+    glPushMatrix();
+    glTranslatef(9.8, 5, 4);
+    glRotatef(-28.5, 0, 1, 0);
+    glScalef(0.5, 10, 18.2);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // LEFT BACK SLANTED
+    glPushMatrix();
+    glTranslatef(-8.4, 5, -7);
+    glRotatef(-60.4, 0, 1, 0);
+    glScalef(0.5, 10, 12.7);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // RIGHT BACK SLANTED
+    glPushMatrix();
+    glTranslatef(8.4, 5, -7);
+    glRotatef(60.4, 0, 1, 0);
+    glScalef(0.5, 10, 12.7);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // Centre piece rectangle
+    glPushMatrix();
+    glTranslatef(0, 5, -10.10);
+    glScalef(6.05, 10, 0.5);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    // Roof
+//    glPushMatrix();
+//    glTranslatef(0, 10, 0);
+//    glRotatef(90, 1, 0, 0);
+//    gluQuadricDrawStyle(q, GLU_FILL);
+//    gluDisk(q, 0, 15, 30, 20);
+//    glPopMatrix();
+
+    // Centre piece rectangle
+//    glPushMatrix();
+//    glTranslatef(0, 15, 0);
+//    gluQuadricDrawStyle(q, GLU_FILL);
+//    gluCylinder(q, 4, 4, 10, 3, 2);
+//    glPopMatrix();
+
+}
